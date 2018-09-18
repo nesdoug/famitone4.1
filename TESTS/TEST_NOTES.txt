@@ -1,0 +1,11 @@
+testA - testing the Wno switch. 300 is unsupported.
+testE - testing the allin switch. Only instrument 00 is used.
+
+testD - testing the multiple D00 in a pattern, different channel, bug fix
+testF - testing the Bxx below D00 in a pattern, different channel, bug fix
+testG - testing the Bxx loop inserting wrong instrument bug fix
+
+TestMusic3.txt - testing a known correct song output, to make sure no new bugs
+
+
+
