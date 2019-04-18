@@ -33,7 +33,7 @@ added features:
 	-use the command line -allin to ensure all instruments are output, even if no song uses it. this may come in handy if you have too many songs and need to split the famitracker file into 2 parts.
 	-the song titles will appear in comments in the asm data. This may come in handy if you need to cut or move 1 song for space reasons.
 
-***new with version 4 - support for 1xx,2xx,4xx effects. They apply to the Square and Triangle channels. Use 100 or 200 to disable the pitch bend. Use 400 to disable to vibrato. The vibrato speed (4xy where x is speed) is permanently set to 8. I recommend that you write all the vibrato effects like 481 482 483, etc. "a" (like 48a) is the maximum depth. Don't try b-f. 
+***new with version 4 - support for 1xx,2xx,4xx effects. They apply to the Square and Triangle channels. Use 100 or 200 to disable the pitch bend. Use 400 to disable to vibrato. The vibrato speed (4xy where x is speed) is permanently set to 6. I recommend that you write all the vibrato effects like 461 462 463, etc. "a" (like 46a) is the maximum depth. 
 
 You can put a 1xx(2xx) and 4xx effect at the same time on a note, but not on the same line...only 1 fx column is allowed(per channel), so 1xx(2xx) on the first line and 4xx on the line below that.
 
