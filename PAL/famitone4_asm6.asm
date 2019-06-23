@@ -1,7 +1,7 @@
-;FamiTone4 unofficial
+;FamiTone4.2 unofficial
 ;fork of Famitone2 v1.15 by Shiru 04'17
 ;for asm6
-;Revision 6-5-2018, Doug Fraker, to be used with text2vol4
+;Revision 6-22-2019, Doug Fraker, to be used with text2vol4
 ;added volume column and support for all NES notes
 ;added support for 1xx,2xx,4xx effects
 ;Pal support has been removed, don't use it

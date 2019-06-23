@@ -1,5 +1,5 @@
 text2vol4, replaces text2data for famitone2
-doug fraker, 9-17-2018, unofficial update, nesdoug.com
+doug fraker, ver 4.2 6-22-2019, unofficial update, nesdoug.com
 
 
 additions so far:
