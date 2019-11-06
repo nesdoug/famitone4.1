@@ -672,9 +672,7 @@ update_sound:
 	beq ch1cut
 	clc
 	adc FT_CH1_NOTE_OFF
-		;.ifdef FT_PITCH_FIX **
-		;ora FT_PAL_ADJUST
-		;.endif
+		;removed pal pitch fix **
 	tax
 	lda FT_CH1_PITCH_OFF
 	tay
@@ -718,9 +716,7 @@ ch1cut:
 	beq ch2cut
 	clc
 	adc FT_CH2_NOTE_OFF
-		;.ifdef FT_PITCH_FIX
-		;ora FT_PAL_ADJUST
-		;.endif
+		;removed pal pitch fix **
 	tax
 	lda FT_CH2_PITCH_OFF
 	tay
@@ -764,9 +760,7 @@ ch2cut:
 	beq ch3cut
 	clc
 	adc FT_CH3_NOTE_OFF
-		;.ifdef FT_PITCH_FIX
-		;ora FT_PAL_ADJUST
-		;.endif
+		;removed pal pitch fix **
 	tax
 	lda FT_CH3_PITCH_OFF
 	tay
