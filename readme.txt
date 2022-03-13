@@ -1,5 +1,13 @@
-text2vol4, replaces text2data for famitone2
-doug fraker, ver 4.2021, unofficial update, nesdoug.com
+update - 3/11/2022
+-now compatible with 0cc-Famitracker and Dn-Famitracker
+-fixed a bug in text2vol4 (undefined behavior) 
+ that might have caused incorrect output
+-in famitone asm, made variables contiguous 
+
+
+famitone 4 (unofficial)
+text2vol4, replaces text2data from famitone2
+doug fraker, nesdoug.com
 
 
 additions so far:
@@ -93,9 +101,10 @@ Sound Fx aren't working? Possible reasons...
 
 -you are calling a sfx # too high. The first sfx is 0, not 1
 
--you are calling a sfx channel too high
-FT_SFX_STREAMS	= 1 means that x should be #0 when calling a sfx
+-you are calling a sfx channel with the wrong value
+FT_SFX_STREAMS	= 1...4 
 LDX #channel, LDA #which_sfx, JSR FamiToneSfxPlay
+but X should have a value 0,15,30, or 45
 
 -forgot to turn on sfx... FT_SFX_ENABLE shouldn't be commented out
 

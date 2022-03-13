@@ -1,4 +1,4 @@
-;FamiTone4.2021.Nov
+;FamiTone4.2022.Mar.12
 ;fork of Famitone2 v1.15 by Shiru 04'17
 ;for asm6
 ;Revision 1-21-2021, Doug Fraker, to be used with text2vol4
@@ -6,42 +6,11 @@
 ;added support for 1xx,2xx,4xx effects
 ;Pal support fixed, volume table exact now
 ;Nov 2021, fixed bug, disabling FT_SFX_ENABLE was broken
+;2022.Mar.12 moved variables to be contiguous
 
 
 
-enum $03e0
-
-volume_Sq1	.db 0	; **
-volume_Sq2	.db 0	
-volume_Nz	.db 0	
-vol_change	.db 0	
-multiple1	.db 0	
-;multiple2	.db 0	
-
-vibrato_depth1 	.db 0 ;zero = off
-vibrato_depth2 	.db 0
-vibrato_depth3 	.db 0
-vibrato_count 	.db 0 ;goes up every frame, shared by all
-
-slide_direction1  .db 0 ;0 = down, !0 = up
-slide_direction2  .db 0
-slide_direction3  .db 0
-slide_speed1 	.db 0 ;how much each frame, zero = off
-slide_speed2 	.db 0
-slide_speed3 	.db 0
-slide_count_low1 	.db 0 ;how much to add / subtract from low byte - cumulative
-slide_count_low2 	.db 0
-slide_count_low3 	.db 0
-slide_count_high1 	.db 0 ; how much to add / subtract from high byte
-slide_count_high2 	.db 0
-slide_count_high3 	.db 0
-
-temp_low 		.db 0 ;low byte of frequency ***
-temp_high 		.db 0
-channel 		.db 0 ;24 new variables
-
-ende
-
+;variables moved below
 
 
 
@@ -200,6 +169,7 @@ FT_SFX_CH0			= FT_SFX_STRUCT_SIZE*0
 FT_SFX_CH1			= FT_SFX_STRUCT_SIZE*1
 FT_SFX_CH2			= FT_SFX_STRUCT_SIZE*2
 FT_SFX_CH3			= FT_SFX_STRUCT_SIZE*3
+SIZE_FT_SFX = FT_SFX_STRUCT_SIZE*FT_SFX_STREAMS
 
 
 ;aliases for the APU registers
@@ -253,6 +223,36 @@ FT_MR_NOISE_V		= FT_OUT_BUF+9
 FT_MR_NOISE_F		= FT_OUT_BUF+10
 ;	.endif
 
+FT_EXTRA = FT_SFX_BASE_ADR+SIZE_FT_SFX
+volume_Sq1 = FT_EXTRA
+volume_Sq2 = FT_EXTRA+1	
+volume_Nz = FT_EXTRA+2	
+vol_change = FT_EXTRA+3	
+multiple1 = FT_EXTRA+4	
+
+vibrato_depth1 = FT_EXTRA+5 ;zero = off
+vibrato_depth2 = FT_EXTRA+6
+vibrato_depth3 = FT_EXTRA+7
+vibrato_count = FT_EXTRA+8 ;goes up every frame, shared by all
+
+slide_direction1 = FT_EXTRA+9 ;0 = down, !0 = up
+slide_direction2 = FT_EXTRA+10
+slide_direction3 = FT_EXTRA+11
+slide_speed1 = FT_EXTRA+12 ;how much each frame, zero = off
+slide_speed2 = FT_EXTRA+13
+slide_speed3 = FT_EXTRA+14
+slide_count_low1 = FT_EXTRA+15 ;how much to add / subtract from low byte - cumulative
+slide_count_low2 = FT_EXTRA+16
+slide_count_low3 = FT_EXTRA+17
+slide_count_high1 = FT_EXTRA+18 ; how much to add / subtract from high byte
+slide_count_high2 = FT_EXTRA+19
+slide_count_high3 = FT_EXTRA+20
+
+temp_low = FT_EXTRA+21 ;low byte of frequency ***
+temp_high = FT_EXTRA+22
+channel = FT_EXTRA+23 ;24 new variables
+
+;see VAR_CHART to find the next safe to use RAM address
 
 
 ;------------------------------------------------------------------------------
