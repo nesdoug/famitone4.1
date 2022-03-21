@@ -13,9 +13,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include <conio.h>
 #include <memory.h>
-
+#ifdef USE_CURSES
+#include <curses.h>
+#else
+#include <conio.h>
+#endif
 
 #define OUT_NESASM	0
 #define OUT_CA65	1
@@ -1891,6 +1894,18 @@ int main(int argc, char* argv[])
 
 	for (i = 1; i < argc; ++i)
 	{
+		#ifdef USE_CURSES
+		if (strncmp(argv[i], "-ca65", 8)) outtype = OUT_CA65;
+		if (strncmp(argv[i], "-asm6", 8)) outtype = OUT_ASM6;
+		if (strncmp(argv[i], "-ch5", 8))  channels = 5;
+		if (strncmp(argv[i], "-ch4", 8))  channels = 4;
+		if (strncmp(argv[i], "-ch3", 8))  channels = 3;
+		if (strncmp(argv[i], "-ch2", 8))  channels = 2;
+		if (strncmp(argv[i], "-ch1", 8))  channels = 1;
+		if (strncmp(argv[i], "-s", 8))    separate = true;
+		if (strncmp(argv[i], "-allin", 8))    keep_instruments = 1; //**
+		if (strncmp(argv[i], "-Wno", 8))    no_warnings = 1; //Z41
+		#else
 		if (!_stricmp(argv[i], "-ca65")) outtype = OUT_CA65;
 		if (!_stricmp(argv[i], "-asm6")) outtype = OUT_ASM6;
 		if (!_stricmp(argv[i], "-ch5"))  channels = 5;
@@ -1901,6 +1916,7 @@ int main(int argc, char* argv[])
 		if (!_stricmp(argv[i], "-s"))    separate = true;
 		if (!_stricmp(argv[i], "-allin"))    keep_instruments = 1; //**
 		if (!_stricmp(argv[i], "-Wno"))    no_warnings = 1; //Z41
+		#endif 
 
 		if (argv[i][0] != '-') strcpy(inname, argv[i]);
 	}
